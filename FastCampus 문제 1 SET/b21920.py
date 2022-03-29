@@ -13,21 +13,17 @@
 ----------
 """
 import sys
+from math import gcd
 input = sys.stdin.readline
 
-def gcd(a, b):
-    while b:
-        r = max(a, b) % min(a, b)
-        a = min(a, b)
-        b = r
-    return a
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a % b
+#     return a
 
 
-N = int(input())
-A = list(set(map(int, input().split())))
+int(input())
+A = list(map(int, input().split()))
 X = int(input())
-numbers = []
-for num in A:
-    if gcd(num, X) == 1:
-        numbers.append(num)
-print(int(sum(numbers)/len(numbers)))
+numbers = [num for num in A if gcd(X, num) == 1]
+print(f"{sum(numbers)/len(numbers):.6f}")
