@@ -9,6 +9,18 @@ solved P(문제번호) : 문제번호 P를 제거
 
 input = __import__('sys').stdin.readline
 
+def recommend(x):
+	if x == 1:
+		pass
+	elif x == -1:
+		pass
+
+def add(p, l):
+	pass
+
+def solved(p):
+	pass
+
 # 추천 문제 리스트에 있는 문제의 개수
 N = int(input())
 lst = [0] * 101
@@ -19,19 +31,13 @@ for i in range(N):
 		lst[L] = P
 	else:
 		lst.insert(L, P)
-print(lst)
-
 
 M = int(input())
 for j in range(M):
 	tmp = list(map(str, input().split()))
 	if tmp[0] == 'recommend':
-		if tmp[1] == '1':
-
-		elif tmp[1] == '-1':
-			
-	elif tmp[0] == 'add':
-		lst.insert(int(tmp[2]), int(tmp[1]))
-	elif tmp[0] == 'solved':
-		lst.remove(int(tmp[1]))
-	print(tmp)
+		recommend(int(tmp[1]))
+	if tmp[0] == 'add':
+		add(int(tmp[1]), int(tmp[2]))
+	if tmp[0] == 'solved':
+		solved(int(tmp[1]))
