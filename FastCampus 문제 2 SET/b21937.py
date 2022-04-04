@@ -32,30 +32,29 @@ https://www.acmicpc.net/problem/21937
 	output 3
 3
 """
-
+from collections import deque
 input = __import__('sys').stdin.readline
 MIIS = lambda: map(int, input().split())
 
 N,M = MIIS()
-
-graph = [[] for _ in range(N+1)]
+cnt = 0
+work = [[] for _ in range(N+1)]
+visited = [False for _ in range(N+1)]
 for _ in range(M):
-    x,y = MIIS()
-    graph[y].append(x)
-
+	a, b = MIIS()
+	work[b].append(a)
 
 start = int(input())
-stack = [start]
-cnt = 0
-visited = [True for _ in range(N+1)]
-visited[start] = False
-while stack:
-    x = stack.pop()
+que = deque()
+que.append(start)
+visited[start] = True
 
-    for next_node in graph[x]:
-        if visited[next_node]:
-            visited[next_node] = False
-            cnt += 1
-            stack.append(next_node)
+while que:
+	x = que.popleft()
+	for i in work[x]:
+		if not visited[i]:
+			visited[i] = True
+			cnt += 1
+			que.append(i)
 
 print(cnt)
