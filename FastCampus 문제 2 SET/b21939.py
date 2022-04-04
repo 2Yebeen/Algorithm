@@ -6,31 +6,37 @@ add P(문제번호) L(난이도) : 추천 문제 리스트에 난이도가 L 인
 
 solved P(문제번호) : 문제번호 P를 제거
 """
-
+import heapq
 input = __import__('sys').stdin.readline
+
 
 def recommend(x):
 	if x == 1:
-		pass
-	elif x == -1:
-		pass
-
-def add(p, l):
-	pass
-
-def solved(p):
-	pass
-
-# 추천 문제 리스트에 있는 문제의 개수
-N = int(input())
-lst = [0] * 101
-for i in range(N):
-	# 문제번호와 난이도가 주어진다.
-	P, L = map(int, input().split())
-	if lst[L] == 0:
-		lst[L] = P
+		print((max_h[0][1] * -1))
 	else:
-		lst.insert(L, P)
+		print(min_h[0][1])
+
+        
+def add(p, l):
+	heapq.heappush(min_h, (l, p))
+	heapq.heappush(max_h, (-l, -p))
+
+    
+def solved(p):
+	if p == (max_h[0][1] * -1):
+		heapq.heappop(max_h)
+	elif p == min_h[0][1]:
+		heapq.heappop(min_h)
+
+    
+N = int(input())
+min_h = []
+max_h = []
+
+for i in range(N):
+	P, L = map(int, input().split())
+	heapq.heappush(min_h, (L, P))  # 우선순위, 값(최소)
+	heapq.heappush(max_h, (-L, -P)) # 우선순위, 값(최대)
 
 M = int(input())
 for j in range(M):
