@@ -58,8 +58,8 @@ MIIS = lambda: map(int, input().split())
 # 입력
 N, M = MIIS()
 pixels = []
-screen = [[] for _ in range(M)]
-visited = [[True] * M for _ in range(N)]
+screen = [[] for _ in range(N)]
+visited = [[False for _ in range(M)] for _ in range(N)]
 for _ in range(N):
 	pixels.append(list(MIIS()))
 T = int(input())
@@ -67,30 +67,35 @@ T = int(input())
 # 화면 값 계산
 for i in range(N):
 	for j in range(0,M*3,3):
-		tmp = sum(pixels[i][j:j+3])/3
-		if tmp > T :
-			screen[i].append(255)
-		else:
+		if sum(pixels[i][j:j+3]) < T * 3:
 			screen[i].append(0)
+		else :
+			screen[i].append(255)
+
 # 물체 계산
 que = deque()
-visited[0][0] = False
-que.append((0, 0))
-dr, dc = [-1, 1, 0, 0], [0, 0, -1, 1]
+# 상(-1, 0), 하(1, 0), 좌(0, -1), 우(0, 1)
+dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
+
+
+def bfs(r, c):
+	que.append((r,c))
+	visited[r][c] = True
+	
+	while que:
+		x, y = que.popleft()
+		for i in range(4):
+			nx = x + dx[i]
+			ny = y + dy[i]
+			if 0 <= nx < N and 0 <= ny < M:
+				if not visited[nx][ny] and screen[nx][ny] == 255:
+					visited[nx][ny] = True
+					que.append((nx,ny))
 cnt = 0
-while que:
-	r, c = que.popleft()
-	if screen[r][c] == 255:
-		cnt += 1
-	for x in range(4):
-		r += dr[x]
-		c += dc[x]
-		while 0 <= row < N and 0 <= col < M and lab[row][col] == 255 :
-			visited[row][col] = False
-			if wind_rotate[lab[row][col]][i] != 9:
-				i = wind_rotate[lab[row][col]][i]
-			else : break
-			row += dr[i]
-			col += dc[i]
+for x in range(N):
+	for y in range(M):
+		if screen[x][y] == 255  and not visited[x][y]:
+			bfs(x,y)
+			cnt += 1
 
 print(cnt)
