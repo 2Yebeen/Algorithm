@@ -1,13 +1,25 @@
-import itertools
+from itertools import combinations, product
 def solution(user_id, banned_id):
 	ans = 0
-	ban = [[] for _ in range(len(banned_id))]
-	for i in range(len(banned_id)):
-		for x in range(len(banned_id[i])):
-			if banned_id[i][x] == "*":
-				ban[i].append(x)
+	ban_u = [[] for _ in range(len(banned_id))]
+	# ban_i = [[] for _ in range(len(banned_id))]
+	# for i in range(len(banned_id)):
+	# 	for x in range(len(banned_id[i])):
+	# 		if banned_id[i][x] == "*":
+	# 			ban_i[i].append(x)
 	
-	print(ban)
+	for b in banned_id:
+		i = 0
+		lb = len(b)
+		for u in user_id:
+			lu = len(u)
+			if lb == lu:
+				while lb > 0:
+				if b[i] != "*" and b[i] != u[i]:
+					break
+			i += 1
+		ban_u.append(u)
+	print(ban_u)
 	return ans
 
 
