@@ -1,0 +1,64 @@
+def sub(number, oper):
+    while '-' in oper :
+        x = oper.index('-')
+        number[x+1] = number[x] - number[x+1]
+        number.pop(x)
+        oper.pop(x)
+    return number
+
+def add(number, oper):
+    while '+' in oper :
+        x = oper.index('+')
+        number[x+1] = number[x] + number[x+1]
+        number.pop(x)
+        oper.pop(x)
+    return number
+
+def mul(number, oper):
+    while '*' in oper :
+        x = oper.index('*')
+        number[x+1] = number[x] * number[x+1]
+        number.pop(x)
+        oper.pop(x)
+    return number
+
+def solution(expression):
+    answer = 0
+    num = expression
+
+    # 연산자를 공백으로
+    num = num.replace('-', ' ')
+    num = num.replace('+', ' ')
+    num = num.replace('*', ' ')
+    # 연산자와 분리
+    num = list(map(int, num.split(' ')))
+
+    # 연산자만
+    op = []
+    [op.append(i) for i in expression if i == '-' or i == '*' or i == '+']
+
+    # 우선순위(총6개) -, +, *
+    operator = ['-', '+', '*']
+    order = [[0, 1, 2], [0, 2, 1],
+             [1, 0, 2], [1, 2, 0],
+             [2, 0, 1], [2, 1, 0]]
+    total = []
+
+    # 우선 순위
+    for x in range(6):
+        number = num[:]
+        oper = op[:]
+        for y in range(len(order[0])):
+            z = order[x][y]
+            if operator[z] == '-':
+                sub(number, oper)
+            if operator[z] == '+':
+                add(number, oper)
+            if operator[z] == '*':
+                mul(number, oper)
+        t = sum(number)
+        if t < 0:
+            t = t * -1
+        total.append(t)
+    answer = (max(total))
+    return answer
