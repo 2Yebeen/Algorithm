@@ -1,0 +1,6 @@
+def solution(x):
+    t = 0
+    for i in list(str(x)):
+        t += int(i)
+    answer = True if x%t == 0 else False
+    return answer
