@@ -1,0 +1,7 @@
+def solution(n):
+    base = []
+    while n > 0:
+        base.append(n%3)
+        n //= 3
+    base.reverse()
+    return sum(x*(3**i) for i, x in enumerate(base))
