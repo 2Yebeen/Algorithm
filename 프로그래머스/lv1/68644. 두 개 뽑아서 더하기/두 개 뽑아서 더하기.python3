@@ -1,0 +1,7 @@
+from itertools import permutations
+def solution(numbers):
+    ans = set()
+    num = set(permutations(numbers, 2))
+    for i in num:
+        ans.add(sum(i))
+    return sorted(list(ans))
