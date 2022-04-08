@@ -6,6 +6,5 @@ if N < 100:
 else:
     cnt = 99
     for i in range(100, N+1):
-        x = str(i)
-        if int(x[0]) - int(x[1]) == int(x[1]) - int(x[2]): cnt += 1
+        if (i//100) - (i%100//10) == (i%100//10) - (i%100%10): cnt += 1
     print(cnt)
