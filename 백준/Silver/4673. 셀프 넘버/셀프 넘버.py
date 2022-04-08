@@ -1,10 +1,9 @@
-numbers = [i for i in range(1, 10001)]
-g_num = []
+numbers = set(range(1, 10001))
+g_num = set()
 for i in range(1, 10001):
     for j in str(i):
         i += int(j)
-    g_num.append(i)
+    g_num.add(i)
 
-for x in numbers:
-    if x not in g_num:
-        print(x)
+self_num = sorted(numbers - g_num)
+print('\n'.join(list(map(str, self_num))))
