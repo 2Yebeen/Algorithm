@@ -1,9 +1,6 @@
 N, M = map(int, input().split())
-original = []
+board = [input() for _ in range(N)]
 count = []
-
-for _ in range(N):
-    original.append(input())
 
 for a in range(N-7):
     for b in range(M-7):
@@ -12,14 +9,14 @@ for a in range(N-7):
         for i in range(a, a+8):
             for j in range(b, b+8):
                 if (i+j) % 2 == 0:
-                    if original[i][j] != 'W':
+                    if board[i][j] != 'W':
                         index1 += 1
-                    if original[i][j] != 'B':
+                    if board[i][j] != 'B':
                         index2 += 1
                 else:
-                    if original[i][j] != 'B':
+                    if board[i][j] != 'B':
                         index1 += 1
-                    if original[i][j] != 'W':
+                    if board[i][j] != 'W':
                         index2 += 1
         count.append(min(index1, index2))
 
