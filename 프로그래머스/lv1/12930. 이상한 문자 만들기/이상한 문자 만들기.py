@@ -1,15 +1,11 @@
 def solution(s):
 	i = 0
 	ret = ''
-	str = list(s)
-	for w in str:
+	for w in s:
 		if w == ' ':
 			ret += ' '
 			i = 0
 			continue ;
-		if i % 2 == 0:
-			ret += w.upper()
-		elif i % 2 != 0:
-			ret += w.lower()
+		ret += w.upper() if i % 2 == 0 else w.lower()
 		i += 1
 	return ret
