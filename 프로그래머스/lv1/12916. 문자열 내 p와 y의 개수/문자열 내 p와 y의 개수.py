@@ -9,6 +9,6 @@ def find(str, w):
 def solution(s):
     p_cnt = find(s.lower(), 'p')
     y_cnt = find(s.lower(), 'y')
-    if (p_cnt == y_cnt) or (p_cnt == 0 and y_cnt == 0):
+    if p_cnt == y_cnt:
         return True
     return False
