@@ -1,0 +1,5 @@
+N, M = map(int, input().split())
+Nset = set([input() for _ in range(N)])
+Mset = set([input() for _ in range(M)])
+NM = sorted(list(Nset & Mset))
+print(len(NM), *NM, sep='\n')
