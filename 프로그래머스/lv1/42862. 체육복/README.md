@@ -1,10 +1,10 @@
 # [level 1] 체육복 - 42862 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42862?itm_content=course14743#) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42862?language=python3) 
 
 ### 성능 요약
 
-메모리: 10.1 MB, 시간: 0.00 ms
+메모리: 10.2 MB, 시간: 0.01 ms
 
 ### 구분
 
@@ -76,7 +76,8 @@
 <p>※ 공지 - 2019년 2월 18일 지문이 리뉴얼되었습니다.<br>
 ※ 공지 - 2019년 2월 27일, 28일 테스트케이스가 추가되었습니다.<br>
 ※ 공지 - 2021년 7월 28일 테스트케이스가 추가되었습니다.<br>
-※ 공지 - 2021년 8월 30일 테스트케이스가 추가되었습니다.</p>
+※ 공지 - 2021년 8월 30일 테스트케이스가 추가되었습니다.<br>
+※ 공지 - 2022년 11월 30일 테스트케이스가 추가되었습니다.</p>
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges
